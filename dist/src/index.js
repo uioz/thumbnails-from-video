@@ -26,10 +26,10 @@ async function createThumbnail(videoPath, ffmpeg, option = {}) {
     if (!IsFprobeData(info)) {
         throw new Error("reading metaData form file failed.");
     }
-    const ouputFloder = option.ouputFloder || path.join(videoPath, "../");
+    const ouputFolder = option.ouputFolder || path.join(videoPath, "../");
     const screenshotName = option.screenshotName || path.parse(videoPath).name;
-    const screenshots = await exactFrames_2.exactFrames(ffmpeg, info.format.duration, videoPath, screenshotName, ouputFloder, option.screenshotCount, option.screenshotExt);
-    const thumbnailOutputPath = path_1.join(ouputFloder, option.thumbnailName || `${screenshotName}-thumbnail`);
+    const screenshots = await exactFrames_2.exactFrames(ffmpeg, info.format.duration, videoPath, screenshotName, ouputFolder, option.screenshotCount, option.screenshotExt);
+    const thumbnailOutputPath = path_1.join(ouputFolder, option.thumbnailName || `${screenshotName}-thumbnail`);
     const thumbnailPath = await makeThumbnails_2.makeThumbnails(screenshots.map((item) => item.outputPath), thumbnailOutputPath, option.thumbnailExt);
     return {
         thumbnailPath,

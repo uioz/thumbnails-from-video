@@ -10,7 +10,7 @@ import * as path from "path";
 import { join } from "path";
 
 interface options {
-  ouputFloder?: string;
+  ouputFolder?: string;
   screenshotName?: string;
   thumbnailName?: string;
   /**
@@ -47,8 +47,8 @@ export default async function createThumbnail(
   }
 
   // input /a/b/c/test.mp4 => output => /a/b/c
-  const ouputFloder = option.ouputFloder || path.join(videoPath, "../");
-  // input /a/b/c/test.mp4 => output test.mp4
+  const ouputFolder = option.ouputFolder || path.join(videoPath, "../");
+  // input /a/b/c/test.mp4 => output test.png
   const screenshotName = option.screenshotName || path.parse(videoPath).name;
 
   const screenshots = await exactFrames(
@@ -56,13 +56,13 @@ export default async function createThumbnail(
     info.format.duration,
     videoPath,
     screenshotName,
-    ouputFloder,
+    ouputFolder,
     option.screenshotCount,
     option.screenshotExt
   );
 
   const thumbnailOutputPath = join(
-    ouputFloder,
+    ouputFolder,
     option.thumbnailName || `${screenshotName}-thumbnail`
   );
 
