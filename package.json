@@ -5,7 +5,7 @@
   "main": "dist/src/index.js",
   "scripts": {
     "dev": "tsc --watch --project tsconfig.json",
-    "bulid": "tsc --project tsconfig.json",
+    "build": "tsc --project tsconfig.json",
     "test": "node dist/test/test.js"
   },
   "repository": {
